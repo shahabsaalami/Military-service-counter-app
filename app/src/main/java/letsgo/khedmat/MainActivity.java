@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         PersianCalendar endDate = (PersianCalendar) startDate.clone();
         endDate.add(Calendar.MONTH , (int) totalMonth);
         endDate.add(Calendar.DAY_OF_MONTH , 1);
-        endDate.add(Calendar.DAY_OF_YEAR , 1);
+//        endDate.add(Calendar.DAY_OF_YEAR , 1);
 //        endDate.add(Calendar.DAY_OF_YEAR ,-30);
 
         txtEndTime.setText(endDate.getPersianLongDate());
@@ -122,19 +122,19 @@ public class MainActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    s--;
+                    s++;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             txtS.setText(String.valueOf(s));
                         }
                     });
-                    if (s == 1) {
-                        s = 59;
-                        m--;
-                        if (m == 1) {
-                            m = 59;
-                            h--;
+                    if (s == 60) {
+                        s = 1;
+                        m++;
+                        if (m == 60) {
+                            m = 1;
+                            h++;
                         }
                         runOnUiThread(new Runnable() {
                             @Override
